@@ -38,9 +38,7 @@ async def quiz(update: Update, context: ContextTypes.DEFAULT_TYPE):
 app = Application.builder().token(BOT_TOKEN).build()
 
 app.add_handler(CommandHandler("start", start))
-app.add_handler(CommandHandler("quiz", quiz))
-
-print("Bot is running...")
+app.add_handler(CommandHandler("quiz", quiz)) print("BOT_TOKEN loaded:", BOT_TOKEN is not None)
 
 if __name__ == "__main__":
     app.run_polling()
