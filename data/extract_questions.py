@@ -1,21 +1,19 @@
+import fitz
 import json
 
-questions = [
-    {
-        "subject": "Science",
-        "question": "पानी का रासायनिक सूत्र क्या है?",
-        "options": ["CO2", "H2O", "O2", "NaCl"],
-        "answer": "H2O"
-    },
-    {
-        "subject": "Maths",
-        "question": "12 × 8 = ?",
-        "options": ["84", "96", "88", "108"],
-        "answer": "96"
-    }
-]
+pdf = fitz.open("PSTET_2024.pdf")
+
+questions = []
+
+for page in pdf:
+    text = page.get_text()
+
+    questions.append({
+        "page": page.number + 1,
+        "text": text
+    })
 
 with open("data/questions.json", "w", encoding="utf-8") as f:
-    json.dump(questions, f, ensure_ascii=False, indent=4)
+    json.dump(questions, f, ensure_ascii=False, indent=2)
 
-print("Questions saved successfully!")
+print("Questions extracted successfully!")
