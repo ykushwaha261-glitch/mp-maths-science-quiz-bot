@@ -13,4 +13,5 @@ app = Application.builder().token(BOT_TOKEN).build()
 app.add_handler(CommandHandler("start", start))
 
 print("Bot is running...")
-app.run_polling()
+app.rif __name__ == "__main__":
+    app.run_polling(close_loop=False)
