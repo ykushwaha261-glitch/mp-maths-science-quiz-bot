@@ -1,5 +1,18 @@
 import fitz
+import json
 
-pdf = fitz.open("MSTST_PSTST_2024.pdf")
+pdf = fitz.open("PSTET_2024.pdf")
 
-print("Total Pages:", len(pdf))
+questions = []
+
+for page in pdf:
+    text = page.get_text()
+    questions.append({
+        "page": page.number + 1,
+        "text": text
+    })
+
+with open("data/questions.json", "w", encoding="utf-8") as f:
+    json.dump(questions, f, ensure_ascii=False, indent=2)
+
+print("PDF Parsed Successfully!")
