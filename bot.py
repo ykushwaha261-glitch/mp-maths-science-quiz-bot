@@ -1,7 +1,8 @@
 from telegram import Update
 from telegram.ext import Application, CommandHandler, ContextTypes
+import os
 
-BOT_TOKEN = "8910718113:AAF9bSR0_HROZ4qJ8mVDR2DLOAXqDwWxOk0"
+BOT_TOKEN = os.getenv("BOT_TOKEN")
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(
@@ -13,5 +14,6 @@ app = Application.builder().token(BOT_TOKEN).build()
 app.add_handler(CommandHandler("start", start))
 
 print("Bot is running...")
-app.rif __name__ == "__main__":
-    app.run_polling(close_loop=False)
+
+if __name__ == "__main__":
+    app.run_polling()
